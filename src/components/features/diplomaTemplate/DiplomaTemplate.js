@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Input } from "../../shared/input/Input";
 import { DiplomaHeader } from "./components/DiplomaHeader";
 import { SubjectEntry } from "./components/SubjectEntry";
+import { Select } from "../../shared/select/Select";
+import { SchoolYears } from "../../shared/constants/SchoolYears";
 
 const Wrapper = styled.div`
   border: 1px solid;
@@ -79,10 +81,10 @@ export const DiplomaTemplate = React.forwardRef(
         <MainText>СВИДЕТЕЛСТВО</MainText>
         <Grade>
           за успехот во
-          <Input
-            type="text"
+          <Select
             name="grade"
             value={formData.grade}
+            options={SchoolYears}
             onChange={handleChange}
             description={"со римски број и со букви"}
             separatorWidth="100%"
@@ -188,12 +190,14 @@ export const DiplomaTemplate = React.forwardRef(
               separatorWidth="100%"
             />
             пат учеше во
-            <Input
-              type="text"
-              name="gradeNumber"
-              value={formData.gradeNumber}
-              description="со римски број и со букви"
+            <Select
+              name="schoolYear"
+              value={formData.schoolYear}
+              options={SchoolYears}
+              onChange={handleChange}
+              description={"со римски број и со букви"}
               separatorWidth="100%"
+              inputWidth="50%"
             />
           </SchoolYearInfo>
           <div>одделение и го постигна следниов успех:</div>

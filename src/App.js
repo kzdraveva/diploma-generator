@@ -8,32 +8,34 @@ import {
 } from "./components/shared/constants/Grades";
 // import ReactToPrint from "react-to-print";
 
+const initialFormData = {
+  schoolName: "",
+  municipality: "",
+  bookNum: "",
+  year: "",
+  grade: "",
+  nameSurname: "",
+  fatherName: "",
+  birthYear: "",
+  birthPlace: "",
+  birthMunicipality: "",
+  country: "",
+  citizenship: "",
+  startSchoolYear: "",
+  endSchoolYear: "",
+  number: "",
+  schoolYear: "",
+  subjects: Array.from({ length: 15 }, (_, index) => ({
+    id: index,
+    name: "",
+    grade: "",
+    gradeNumber: "",
+  })),
+};
+
 function App() {
   const [pageNumber, setPageNumber] = useState(1);
-  const [formData, setFormData] = useState({
-    schoolName: "",
-    municipality: "",
-    bookNum: "",
-    year: "",
-    grade: "",
-    nameSurname: "",
-    fatherName: "",
-    birthYear: "",
-    birthPlace: "",
-    birthMunicipality: "",
-    country: "",
-    citizenship: "",
-    startSchoolYear: "",
-    endSchoolYear: "",
-    number: "",
-    gradeNumber: "",
-    subjects: Array.from({ length: 15 }, (_, index) => ({
-      id: index,
-      name: "",
-      grade: "",
-      gradeNumber: "",
-    })),
-  });
+  const [formData, setFormData] = useState(initialFormData);
 
   const componentRef = useRef();
   const printRef = useRef();
@@ -45,7 +47,7 @@ function App() {
   };
 
   const onDelete = () => {
-    console.log("On delete");
+    setFormData(initialFormData);
   };
 
   const onPageChange = () => {
@@ -56,11 +58,23 @@ function App() {
     }
   };
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value }, () => {
-      console.log(formData);
-    });
+  const handleChange = (event, name) => {
+    const { value } = event.target;
+
+    // If the event comes from a select component, directly update the form data
+    if (name) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
+      }));
+    } else {
+      // If the event comes from an input component, extract the name from the event
+      const { name } = event.target;
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubjectChange = (e, field, id) => {
