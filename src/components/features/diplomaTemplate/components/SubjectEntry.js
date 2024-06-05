@@ -1,4 +1,3 @@
-import { MandatorySubjects } from "../../../shared/constants/Subjects";
 import { Grades, GradesNumber } from "../../../shared/constants/Grades";
 import { Select } from "../../../shared/select/Select";
 import styled from "styled-components";
@@ -10,12 +9,12 @@ const SubjectsInfo = styled.div`
   text-align: left;
 `;
 
-export const SubjectEntry = ({ subject, handleChange }) => (
+export const SubjectEntry = ({ subject, handleChange, subjectsOptions }) => (
   <SubjectsInfo>
     <Select
       inputWidth="50%"
       separatorWidth="80%"
-      options={MandatorySubjects}
+      options={subjectsOptions}
       value={subject.name}
       onChange={(e) => handleChange(e, "name", subject.id)}
     />

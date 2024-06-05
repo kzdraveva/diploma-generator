@@ -6,6 +6,7 @@ import {
   gradeToNumber,
   numberToGrade,
 } from "./components/shared/constants/Grades";
+import { calculateFinalGrade } from "./components/shared/utilities/functions/functions";
 // import ReactToPrint from "react-to-print";
 
 const initialFormData = {
@@ -13,7 +14,6 @@ const initialFormData = {
   municipality: "",
   bookNum: "",
   year: "",
-  grade: "",
   nameSurname: "",
   fatherName: "",
   birthYear: "",
@@ -25,7 +25,18 @@ const initialFormData = {
   endSchoolYear: "",
   number: "",
   schoolYear: "",
-  subjects: Array.from({ length: 15 }, (_, index) => ({
+  behaviorResult: "",
+  justifiedaAbsences: "",
+  unjustifiedAbsences: "",
+  finalGrade: "",
+  date: "",
+  mandatorySubjects: Array.from({ length: 15 }, (_, index) => ({
+    id: index,
+    name: "",
+    grade: "",
+    gradeNumber: "",
+  })),
+  optionalSubjects: Array.from({ length: 4 }, (_, index) => ({
     id: index,
     name: "",
     grade: "",
@@ -59,35 +70,29 @@ function App() {
   };
 
   const handleChange = (event, name) => {
-    const { value } = event.target;
+    const value = event.target ? event.target.value : event;
 
-    // If the event comes from a select component, directly update the form data
-    if (name) {
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        [name]: value,
-      }));
-    } else {
-      // If the event comes from an input component, extract the name from the event
-      const { name } = event.target;
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        [name]: value,
-      }));
-    }
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name || event.target.name]: value,
+    }));
   };
 
-  const handleSubjectChange = (e, field, id) => {
+  const handleSubjectChange = (e, field, id, isOptional = false) => {
     const { value } = e.target;
 
     setFormData((prevFormData) => {
-      const updatedSubjects = prevFormData.subjects.map((subject) => {
+      const subjectsKey = isOptional ? "optionalSubjects" : "mandatorySubjects";
+      const updatedSubjects = prevFormData[subjectsKey].map((subject) => {
         if (subject.id === id) {
           let updatedSubject = { ...subject, [field]: value };
 
-          if (field === "grade" && gradeToNumber[value]) {
+          if (field === "grade" && gradeToNumber[value] !== undefined) {
             updatedSubject.gradeNumber = gradeToNumber[value];
-          } else if (field === "gradeNumber" && numberToGrade[value]) {
+          } else if (
+            field === "gradeNumber" &&
+            numberToGrade[value] !== undefined
+          ) {
             updatedSubject.grade = numberToGrade[value];
           }
 
@@ -96,9 +101,19 @@ function App() {
         return subject;
       });
 
+      const finalGrade = calculateFinalGrade(
+        subjectsKey === "mandatorySubjects"
+          ? updatedSubjects
+          : prevFormData.mandatorySubjects,
+        subjectsKey === "optionalSubjects"
+          ? updatedSubjects
+          : prevFormData.optionalSubjects
+      );
+
       return {
         ...prevFormData,
-        subjects: updatedSubjects,
+        [subjectsKey]: updatedSubjects,
+        finalGrade,
       };
     });
   };

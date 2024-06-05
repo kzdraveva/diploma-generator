@@ -28,6 +28,22 @@ export const MandatorySubjects = [
     value: "Fizicko i zdravstveno obrazovanie",
     label: "Физичко и здравствено образование",
   },
+  { value: "Jazik i kultura na Vlasite", label: "Јазик и култура на Власите" },
+  { value: "Jazik i kultura na Romite", label: "Јазик и култура на Ромите" },
+  {
+    value: "Jazik i kultura na Bosnjacite",
+    label: "Јазик и култура на Бошњаците",
+  },
+  { value: "Jazik i kultura na Srbite", label: "Јазик и култура на Србите" },
+  { value: "Jazik i kultura na Turcite", label: "Јазик и култура на Турците" },
+  { value: "Tvorestvo", label: "Творештво" },
+  { value: "Etika na religii", label: "Етика на религии" },
+  { value: "Zapoznavanje na religiite", label: "Запознавање на религиите" },
+  {
+    value: "Klasicna kultura vo evropskata civilizacija",
+    label: "Класична култура во европската цивилизација",
+  },
+  { value: "Albanski jazik", label: "Албански јазик" },
 ];
 
 export const OptionalSubjects = [

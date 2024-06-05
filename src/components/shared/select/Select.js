@@ -49,7 +49,7 @@ export const Select = ({
         value={value || ""}
         customStyles={customStyle}
         separatorWidth={separatorWidth}
-        onChange={onChange}
+        onChange={(e) => onChange(e, name)}
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>
