@@ -24,12 +24,13 @@ const SeparatorLine = styled.div`
   height: 1px;
   background: #000;
   width: ${(props) => props.separatorWidth || "25%"};
-  margin-bottom: 10px;
+  margin-bottom: ${(props) => (props.hasDescription ? "0" : "10px")};
 `;
 
 const DescriptionStyle = styled.div`
-  font-size: 15px;
-  margin-bottom: 10px;
+  font-size: 13px;
+  margin-bottom: ${(props) => (props.hasDescription ? "10px" : "0")};
+  text-align: center;
 `;
 
 export const Select = ({
@@ -57,8 +58,15 @@ export const Select = ({
           </option>
         ))}
       </StyledSelect>
-      <SeparatorLine separatorWidth={separatorWidth} />
-      {description && <DescriptionStyle>{`(${description})`}</DescriptionStyle>}
+      <SeparatorLine
+        separatorWidth={separatorWidth}
+        hasDescription={description}
+      />
+      {description && (
+        <DescriptionStyle
+          hasDescription={true}
+        >{`(${description})`}</DescriptionStyle>
+      )}
     </SelectContainer>
   );
 };

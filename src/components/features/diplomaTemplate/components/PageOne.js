@@ -5,6 +5,7 @@ import { SubjectEntry } from "../components/SubjectEntry";
 import { Select } from "../../../shared/select/Select";
 import { SchoolYears } from "../../../shared/constants/SchoolYears";
 import { MandatorySubjects } from "../../../shared/constants/Subjects";
+import { FlexContainer } from "../../../shared/flexContainer/FlexContainer";
 
 const SeparatorLine = styled.div`
   height: 1px;
@@ -18,34 +19,11 @@ const MainText = styled.div`
   font-size: 20px;
 `;
 
-const Grade = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  margin-top: 25px;
-`;
-
-const PersonalInfo = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: center;
-`;
-
-const SchoolYearInfoWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  width: 100%;
-`;
-
-const SchoolYearInfo = styled.div`
-  display: flex;
-`;
-
 const SubjectsInfo = styled.div`
   display: flex;
   width: 100%;
   margin-top: 10px;
+  margin-bottom: 20px;
   text-align: left;
 `;
 
@@ -54,11 +32,12 @@ const Subjects = styled.div`
 `;
 
 const GradeText = styled.div`
-  width: 25%;
+  width: 35%;
+  text-align: center;
 `;
 
 const GradeNumber = styled.div`
-  width: 25%;
+  width: 15%;
 `;
 
 export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
@@ -66,7 +45,7 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
     <>
       <DiplomaHeader formData={formData} handleChange={handleChange} />
       <MainText>СВИДЕТЕЛСТВО</MainText>
-      <Grade>
+      <FlexContainer justify="center" gap="5px" margin="25px 0 0 0">
         за успехот во
         <Select
           name="schoolYear"
@@ -78,7 +57,7 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
           inputWidth="50%"
         />
         одделение
-      </Grade>
+      </FlexContainer>
       <Input
         type="text"
         name="nameSurname"
@@ -88,7 +67,7 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
         separatorWidth="100%"
         inputWidth="100%"
       />
-      <PersonalInfo>
+      <FlexContainer justify="center" gap="5px">
         син/ќерка на
         <Input
           type="text"
@@ -109,8 +88,8 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
           inputWidth="40%"
         />
         година
-      </PersonalInfo>
-      <PersonalInfo>
+      </FlexContainer>
+      <FlexContainer justify="center" gap="5px">
         во
         <Input
           type="text"
@@ -129,8 +108,8 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
           separatorWidth="100%"
           inputWidth="50%"
         />
-      </PersonalInfo>
-      <PersonalInfo>
+      </FlexContainer>
+      <FlexContainer justify="center" gap="5px">
         држава
         <Input
           type="text"
@@ -149,10 +128,10 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
           separatorWidth="100%"
           inputWidth="50%"
         />
-      </PersonalInfo>
-      <SchoolYearInfoWrapper>
+      </FlexContainer>
+      <FlexContainer direction="column" align="start">
         <SeparatorLine />
-        <SchoolYearInfo>
+        <FlexContainer gap="5px">
           во учебната 20/
           <Input
             type="text"
@@ -160,6 +139,7 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
             value={formData.startSchoolYear}
             onChange={handleChange}
             separatorWidth="100%"
+            inputWidth="5%"
           />
           20
           <Input
@@ -168,6 +148,7 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
             value={formData.endSchoolYear}
             onChange={handleChange}
             separatorWidth="100%"
+            inputWidth="5%"
           />
           година по
           <Input
@@ -176,6 +157,7 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
             value={formData.number}
             onChange={handleChange}
             separatorWidth="100%"
+            inputWidth="15%"
           />
           пат учеше во
           <Select
@@ -185,10 +167,11 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
             onChange={handleChange}
             description={"со римски број и со букви"}
             separatorWidth="100%"
+            inputWidth="33%"
           />
-        </SchoolYearInfo>
-        <div>одделение и го постигна следниов успех:</div>
-      </SchoolYearInfoWrapper>
+        </FlexContainer>
+        <div>одделение на основното училиште и го постигна следниот успех:</div>
+      </FlexContainer>
       <SubjectsInfo>
         <Subjects>Задолжителни предмети</Subjects>
         <GradeText> Успех </GradeText>

@@ -11,7 +11,7 @@ const StyledInput = styled.input`
   border: none;
   box-sizing: border-box;
   width: ${(props) => props.separatorWidth || "20%"};
-  text-align: center;
+  text-align: ${(props) => props.textAlign || "left"};
 
   ${(props) =>
     props.customStyles &&
@@ -24,12 +24,12 @@ const SeparatorLine = styled.div`
   height: 1px;
   background: #000;
   width: ${(props) => props.separatorWidth || "20%"};
-  margin-bottom: 10px;
+  margin-bottom: ${(props) => (props.hasDescription ? "0" : "10px")};
 `;
 
 const DescriptionStyle = styled.div`
-  font-size: 15px;
-  margin-bottom: 10px;
+  font-size: 13px;
+  margin-bottom: ${(props) => (props.hasDescription ? "10px" : "0")};
 `;
 
 export const Input = ({
@@ -40,6 +40,7 @@ export const Input = ({
   separatorWidth,
   inputWidth,
   description,
+  textAlign,
   onChange,
 }) => {
   return (
@@ -51,9 +52,17 @@ export const Input = ({
         customStyles={customStyle}
         separatorWidth={separatorWidth}
         onChange={onChange}
+        textAlign={textAlign}
       />
-      <SeparatorLine separatorWidth={separatorWidth} />
-      {description && <DescriptionStyle>{`(${description})`}</DescriptionStyle>}
+      <SeparatorLine
+        separatorWidth={separatorWidth}
+        hasDescription={description}
+      />
+      {description && (
+        <DescriptionStyle
+          hasDescription={true}
+        >{`(${description})`}</DescriptionStyle>
+      )}
     </InputContainer>
   );
 };
