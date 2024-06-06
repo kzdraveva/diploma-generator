@@ -8,26 +8,13 @@ import { SchoolYears } from "../../../shared/constants/SchoolYears";
 import { FlexContainer } from "../../../shared/flexContainer/FlexContainer";
 
 const Wrapper = styled.div`
-  margin-top: 20px;
+  margin-top: 80px;
   width: 100%;
 `;
 
 const OptionalSubjectsStyle = styled.div`
   text-align: left;
-`;
-
-const BehaviorResultsStyle = styled.div`
-  display: flex;
-  margin-top: 40px;
-`;
-
-const AbsencesStyle = styled.div`
-  display: flex;
-`;
-
-const TotalGradeInfo = styled.div`
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 5px;
 `;
 
 export const PageTwo = ({ formData, handleSubjectChange, handleChange }) => {
@@ -44,7 +31,7 @@ export const PageTwo = ({ formData, handleSubjectChange, handleChange }) => {
           }
         />
       ))}
-      <BehaviorResultsStyle>
+      <FlexContainer margin="40px 0 15px 0" gap="5px">
         Поведение
         <Select
           name="behaviorResult"
@@ -53,8 +40,8 @@ export const PageTwo = ({ formData, handleSubjectChange, handleChange }) => {
           onChange={handleChange}
           separatorWidth="100%"
         />
-      </BehaviorResultsStyle>
-      <AbsencesStyle>
+      </FlexContainer>
+      <FlexContainer gap="5px" margin="0 0 15px 0">
         Изостаноци: оправдани
         <Input
           type="text"
@@ -62,6 +49,7 @@ export const PageTwo = ({ formData, handleSubjectChange, handleChange }) => {
           value={formData.justifiedAbsences}
           onChange={handleChange}
           separatorWidth="100%"
+          textAlign="center"
         />
         неоправдани
         <Input
@@ -70,10 +58,11 @@ export const PageTwo = ({ formData, handleSubjectChange, handleChange }) => {
           value={formData.unjustifiedAbsences}
           onChange={handleChange}
           separatorWidth="100%"
+          textAlign="center"
         />
-      </AbsencesStyle>
-      <TotalGradeInfo>
-        <FlexContainer>
+      </FlexContainer>
+      <FlexContainer direction="column">
+        <FlexContainer gap="5px" margin="0 0 15px 0">
           Според постигнатиот успех ученикот/ученичката заврши
           <Select
             name="schoolYear"
@@ -82,7 +71,7 @@ export const PageTwo = ({ formData, handleSubjectChange, handleChange }) => {
             onChange={handleChange}
             description={"со римски број и со букви"}
             separatorWidth="100%"
-            inputWidth="40%"
+            inputWidth="35%"
           />
           одделение
         </FlexContainer>
@@ -94,7 +83,7 @@ export const PageTwo = ({ formData, handleSubjectChange, handleChange }) => {
             value={formData.finalGrade}
             description="успех?"
             separatorWidth="100%"
-            inputWidth="70%"
+            inputWidth="80%"
           />
         </FlexContainer>
         <FlexContainer justify="space-between">
@@ -129,7 +118,7 @@ export const PageTwo = ({ formData, handleSubjectChange, handleChange }) => {
             Дел бр. <Input separatorWidth="100%" />
           </FlexContainer>
         </FlexContainer>
-      </TotalGradeInfo>
+      </FlexContainer>
     </Wrapper>
   );
 };

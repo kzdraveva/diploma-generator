@@ -13,24 +13,43 @@ const SeparatorLine = styled.div`
   height: 2px;
   background: #000;
   width: 100%;
+
+  @media print {
+    visibility: hidden;
+    display: block !important;
+  }
 `;
 
 const LogoStyle = styled.img`
-  width: 45px;
+  height: 50px;
+
+  @media print {
+    visibility: hidden;
+    display: block !important;
+  }
 `;
 
 const HeadText = styled.div`
   font-size: 16px;
-  margin: 8px 0;
+  margin: 0 0 10px 0;
+
+  @media print {
+    visibility: hidden;
+    display: block !important;
+  }
 `;
 
 const InputWrapperStyle = styled.div`
-  margin-top: 10px;
+  margin-top: 6px;
 `;
-const InputsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
+
+const Text = styled.div`
+  @media print {
+    visibility: hidden;
+    display: block !important;
+  }
 `;
+
 export const DiplomaHeader = ({ formData, handleChange }) => {
   return (
     <HeaderStyle>
@@ -48,7 +67,7 @@ export const DiplomaHeader = ({ formData, handleChange }) => {
           textAlign="center"
         />
       </InputWrapperStyle>
-      <InputsWrapper>
+      <FlexContainer justify="space-between">
         <Input
           type="text"
           name="municipality"
@@ -59,7 +78,7 @@ export const DiplomaHeader = ({ formData, handleChange }) => {
           textAlign="center"
         />
         <FlexContainer gap="5px" justify="flex-end">
-          Главна книга бр.
+          <Text>Главна книга бр.</Text>
           <Input
             type="text"
             name="bookNum"
@@ -68,7 +87,7 @@ export const DiplomaHeader = ({ formData, handleChange }) => {
             onChange={handleChange}
             textAlign="center"
           />
-          /20
+          <Text>/20</Text>
           <Input
             type="text"
             name="year"
@@ -77,9 +96,9 @@ export const DiplomaHeader = ({ formData, handleChange }) => {
             inputWidth="5%"
             onChange={handleChange}
           />
-          година
+          <Text>година</Text>
         </FlexContainer>
-      </InputsWrapper>
+      </FlexContainer>
     </HeaderStyle>
   );
 };

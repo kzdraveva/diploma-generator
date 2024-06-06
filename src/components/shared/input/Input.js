@@ -7,7 +7,7 @@ const InputContainer = styled.div`
 `;
 
 const StyledInput = styled.input`
-  background-color: #eeeeee;
+  //background-color: #eeeeee;
   border: none;
   box-sizing: border-box;
   width: ${(props) => props.separatorWidth || "20%"};
@@ -25,11 +25,21 @@ const SeparatorLine = styled.div`
   background: #000;
   width: ${(props) => props.separatorWidth || "20%"};
   margin-bottom: ${(props) => (props.hasDescription ? "0" : "10px")};
+
+  @media print {
+    visibility: hidden;
+    display: block !important;
+  }
 `;
 
 const DescriptionStyle = styled.div`
-  font-size: 13px;
-  margin-bottom: ${(props) => (props.hasDescription ? "10px" : "0")};
+  font-size: 10px;
+  text-align: center;
+
+  @media print {
+    visibility: hidden;
+    display: block !important;
+  }
 `;
 
 export const Input = ({

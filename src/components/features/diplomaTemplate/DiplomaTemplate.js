@@ -7,13 +7,13 @@ const Wrapper = styled.div`
   border: 1px solid;
   border-bottom: none;
   width: 90%;
-  padding: 30px 45px;
+  padding: 25px 45px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: auto;
-  max-height: 100vh;
+  max-height: 650px;
   min-height: 650px;
 
   @media print {

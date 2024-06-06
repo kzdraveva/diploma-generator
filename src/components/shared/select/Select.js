@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const SelectContainer = styled.div`
   display: flex;
@@ -7,17 +7,20 @@ const SelectContainer = styled.div`
 `;
 
 const StyledSelect = styled.select`
-  background-color: #eeeeee;
+  //background-color: #eeeeee;
   border: none;
   box-sizing: border-box;
   width: ${(props) => props.separatorWidth || "25%"};
   text-align: center;
 
-  ${(props) =>
-    props.customStyles &&
-    css`
-      ${props.customStyles}
-    `}
+  @media print {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
 `;
 
 const SeparatorLine = styled.div`
@@ -25,18 +28,26 @@ const SeparatorLine = styled.div`
   background: #000;
   width: ${(props) => props.separatorWidth || "25%"};
   margin-bottom: ${(props) => (props.hasDescription ? "0" : "10px")};
+
+  @media print {
+    visibility: hidden;
+    display: block !important;
+  }
 `;
 
 const DescriptionStyle = styled.div`
-  font-size: 13px;
-  margin-bottom: ${(props) => (props.hasDescription ? "10px" : "0")};
+  font-size: 10px;
   text-align: center;
+
+  @media print {
+    visibility: hidden;
+    display: block !important;
+  }
 `;
 
 export const Select = ({
   name,
   value,
-  customStyle,
   separatorWidth,
   inputWidth,
   description,
@@ -48,7 +59,6 @@ export const Select = ({
       <StyledSelect
         name={name}
         value={value || ""}
-        customStyles={customStyle}
         separatorWidth={separatorWidth}
         onChange={(e) => onChange(e, name)}
       >

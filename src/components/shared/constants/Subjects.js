@@ -10,7 +10,7 @@ export const MandatorySubjects = [
   { value: "Prirodni nauki", label: "Природни науки" },
   { value: "Muzicko obrazovanie", label: "Музичко образование" },
   { value: "Likovno obrazovanie", label: "Ликовно образование" },
-  { value: "Tehnicko obrazovanie", label: "Техночко образование" },
+  { value: "Tehnicko obrazovanie", label: "Техничко образование" },
   { value: "Geografija", label: "Географија" },
   { value: "Istorija", label: "Историја" },
   { value: "Biologija", label: "Биологија" },

@@ -30,7 +30,7 @@ const initialFormData = {
   unjustifiedAbsences: "",
   finalGrade: "",
   date: "",
-  mandatorySubjects: Array.from({ length: 15 }, (_, index) => ({
+  mandatorySubjects: Array.from({ length: 17 }, (_, index) => ({
     id: index,
     name: "",
     grade: "",

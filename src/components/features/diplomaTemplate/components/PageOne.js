@@ -11,33 +11,60 @@ const SeparatorLine = styled.div`
   height: 1px;
   background: #000;
   width: 100%;
-  margin: 30px 0 10px 0;
+  margin: 20px 0 10px 0;
+
+  @media print {
+    visibility: hidden;
+    display: block !important;
+  }
 `;
 
 const MainText = styled.div`
   font-weight: bold;
   font-size: 20px;
+
+  @media print {
+    visibility: hidden;
+    display: block !important;
+  }
 `;
 
 const SubjectsInfo = styled.div`
   display: flex;
   width: 100%;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   text-align: left;
 `;
 
 const Subjects = styled.div`
   width: 50%;
+
+  @media print {
+    visibility: hidden;
+    display: block !important;
+  }
 `;
 
 const GradeText = styled.div`
   width: 35%;
   text-align: center;
+
+  @media print {
+    visibility: hidden;
+    display: block !important;
+  }
 `;
 
 const GradeNumber = styled.div`
   width: 15%;
+`;
+
+const Text = styled.div`
+  @media print {
+    visibility: hidden;
+    display: block !important;
+  }
 `;
 
 export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
@@ -45,8 +72,8 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
     <>
       <DiplomaHeader formData={formData} handleChange={handleChange} />
       <MainText>СВИДЕТЕЛСТВО</MainText>
-      <FlexContainer justify="center" gap="5px" margin="25px 0 0 0">
-        за успехот во
+      <FlexContainer justify="center" gap="5px" margin="5px 0 0 0">
+        <Text>за успехот во</Text>
         <Select
           name="schoolYear"
           value={formData.schoolYear}
@@ -56,7 +83,7 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
           separatorWidth="100%"
           inputWidth="50%"
         />
-        одделение
+        <Text>одделение</Text>
       </FlexContainer>
       <Input
         type="text"
@@ -66,9 +93,10 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
         description={"име и презиме на ученикот/ученичката"}
         separatorWidth="100%"
         inputWidth="100%"
+        textAlign="center"
       />
       <FlexContainer justify="center" gap="5px">
-        син/ќерка на
+        <Text> син/ќерка на</Text>
         <Input
           type="text"
           name="fatherName"
@@ -77,8 +105,9 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
           description={"име на родителот/старателот"}
           separatorWidth="100%"
           inputWidth="30%"
+          textAlign="center"
         />
-        роден/а на
+        <Text>роден/а на</Text>
         <Input
           type="text"
           name="birthYear"
@@ -86,11 +115,12 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
           onChange={handleChange}
           separatorWidth="100%"
           inputWidth="40%"
+          textAlign="center"
         />
-        година
+        <Text>година</Text>
       </FlexContainer>
       <FlexContainer justify="center" gap="5px">
-        во
+        <Text>во</Text>
         <Input
           type="text"
           name="birthPlace"
@@ -98,8 +128,9 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
           onChange={handleChange}
           separatorWidth="100%"
           inputWidth="50%"
+          textAlign="center"
         />
-        општина
+        <Text> општина</Text>
         <Input
           type="text"
           name="birthMunicipality"
@@ -107,10 +138,11 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
           onChange={handleChange}
           separatorWidth="100%"
           inputWidth="50%"
+          textAlign="center"
         />
       </FlexContainer>
       <FlexContainer justify="center" gap="5px">
-        држава
+        <Text> држава</Text>
         <Input
           type="text"
           name="country"
@@ -118,8 +150,9 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
           onChange={handleChange}
           separatorWidth="100%"
           inputWidth="50%"
+          textAlign="center"
         />
-        државјанство
+        <Text> државјанство</Text>
         <Input
           type="text"
           name="citizenship"
@@ -127,12 +160,13 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
           onChange={handleChange}
           separatorWidth="100%"
           inputWidth="50%"
+          textAlign="center"
         />
       </FlexContainer>
       <FlexContainer direction="column" align="start">
         <SeparatorLine />
         <FlexContainer gap="5px">
-          во учебната 20/
+          <Text> во учебната 20</Text>
           <Input
             type="text"
             name="startSchoolYear"
@@ -141,7 +175,7 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
             separatorWidth="100%"
             inputWidth="5%"
           />
-          20
+          <Text> /20</Text>
           <Input
             type="text"
             name="endSchoolYear"
@@ -150,16 +184,18 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
             separatorWidth="100%"
             inputWidth="5%"
           />
-          година по
+          <Text> година по</Text>
           <Input
             type="text"
             name="number"
             value={formData.number}
             onChange={handleChange}
+            description="со букви"
             separatorWidth="100%"
             inputWidth="15%"
+            textAlign="center"
           />
-          пат учеше во
+          <Text> пат учеше во</Text>
           <Select
             name="schoolYear"
             value={formData.schoolYear}
@@ -170,7 +206,9 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
             inputWidth="33%"
           />
         </FlexContainer>
-        <div>одделение на основното училиште и го постигна следниот успех:</div>
+        <Text>
+          одделение на основното училиште и го постигна следниот успех:
+        </Text>
       </FlexContainer>
       <SubjectsInfo>
         <Subjects>Задолжителни предмети</Subjects>
