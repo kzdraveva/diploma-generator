@@ -5,7 +5,7 @@ const ButtonsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 60%;
+  width: 70%;
   align-items: center;
   gap: 30px;
 `;

@@ -5,7 +5,6 @@ import styled from "styled-components";
 const SubjectsInfo = styled.div`
   display: flex;
   width: 100%;
-  margin-top: 10px;
   text-align: left;
 `;
 

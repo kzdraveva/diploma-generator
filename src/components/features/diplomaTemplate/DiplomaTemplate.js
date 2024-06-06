@@ -5,16 +5,22 @@ import { PageTwo } from "./components/PageTwo";
 
 const Wrapper = styled.div`
   border: 1px solid;
-  width: 30%;
+  border-bottom: none;
+  width: 90%;
   padding: 30px 45px;
-  width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: auto;
-  max-height: 630px;
-  min-height: 630px;
+  max-height: 100vh;
+  min-height: 650px;
+
+  @media print {
+    overflow: visible;
+    height: auto;
+    page-break-inside: avoid;
+  }
 `;
 
 export const DiplomaTemplate = React.forwardRef(

@@ -97,7 +97,7 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
           onChange={handleChange}
           description={"име на родителот/старателот"}
           separatorWidth="100%"
-          inputWidth="37%"
+          inputWidth="30%"
         />
         роден/а на
         <Input
@@ -189,7 +189,6 @@ export const PageOne = ({ formData, handleChange, handleSubjectChange }) => {
         </SchoolYearInfo>
         <div>одделение и го постигна следниов успех:</div>
       </SchoolYearInfoWrapper>
-      <SeparatorLine />
       <SubjectsInfo>
         <Subjects>Задолжителни предмети</Subjects>
         <GradeText> Успех </GradeText>

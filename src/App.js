@@ -7,7 +7,7 @@ import {
   numberToGrade,
 } from "./components/shared/constants/Grades";
 import { calculateFinalGrade } from "./components/shared/utilities/functions/functions";
-// import ReactToPrint from "react-to-print";
+import ReactToPrint from "react-to-print";
 
 const initialFormData = {
   schoolName: "",
@@ -133,11 +133,7 @@ function App() {
         onDelete={onDelete}
         onPageChange={onPageChange}
       />
-      {/* <ReactToPrint
-        ref={printRef}
-        trigger={() => null}
-        content={() => componentRef.current}
-      /> */}
+      <ReactToPrint ref={printRef} content={() => componentRef.current} />
     </MainLayout>
   );
 }
