@@ -12,8 +12,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: auto;
-  max-height: 650px;
   min-height: 650px;
 
   @media print {

@@ -7,6 +7,7 @@ import {
   numberToGrade,
 } from "./components/shared/constants/Grades";
 import { calculateFinalGrade } from "./components/shared/utilities/functions/functions";
+import { validateFormData } from "./components/shared/utilities/functions/validation";
 import ReactToPrint from "react-to-print";
 
 const initialFormData = {
@@ -29,7 +30,10 @@ const initialFormData = {
   justifiedaAbsences: "",
   unjustifiedAbsences: "",
   finalGrade: "",
+  delNum: "",
   date: "",
+  actNum: "",
+  ministry: "",
   mandatorySubjects: Array.from({ length: 17 }, (_, index) => ({
     id: index,
     name: "",
@@ -52,8 +56,14 @@ function App() {
   const printRef = useRef();
 
   const onPrint = () => {
-    if (printRef.current) {
-      printRef.current.handlePrint();
+    if (validateFormData(formData)) {
+      if (printRef.current) {
+        printRef.current.handlePrint();
+      }
+    } else {
+      alert(
+        "Доколку сакате да го испечатите вашето свидетелство, вe молиме пополнете ги празните полиња. "
+      );
     }
   };
 
