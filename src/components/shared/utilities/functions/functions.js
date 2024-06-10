@@ -14,6 +14,22 @@ export const calculateFinalGrade = (mandatorySubjects, optionalSubjects) => {
   // Calculate the sum of the grades
   const sum = grades.reduce((acc, grade) => acc + grade, 0);
 
-  // Calculate and return the average
-  return grades.length ? (sum / grades.length).toFixed(2) : "";
+  // Calculate the average grade
+  const average = grades.length ? (sum / grades.length).toFixed(2) : "";
+
+  // Determine the description based on the average grade
+  let description = "";
+  if (average >= 1 && average < 1.5) {
+    description = "Недоволен";
+  } else if (average >= 1.5 && average < 2.5) {
+    description = "Доволен";
+  } else if (average >= 2.5 && average < 3.5) {
+    description = "Добар";
+  } else if (average >= 3.5 && average < 4.5) {
+    description = "Многу добар";
+  } else if (average >= 4.5 && average <= 5.0) {
+    description = "Одличен";
+  }
+
+  return `${description} (${average})`;
 };

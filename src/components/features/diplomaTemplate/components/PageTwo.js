@@ -15,10 +15,16 @@ const Wrapper = styled.div`
 const OptionalSubjectsStyle = styled.div`
   text-align: left;
   margin-bottom: 5px;
+
+  @media print {
+    visibility: hidden;
+    display: block !important;
+  }
 `;
 
 const Text = styled.div`
   font-size: ${(props) => props.fontSize || "16px"};
+
   @media print {
     visibility: hidden;
     display: block !important;
@@ -30,6 +36,11 @@ const SeparatorLine = styled.div`
   background-color: black;
   width: 100%;
   margin: 20px 0 15px 0;
+
+  @media print {
+    visibility: hidden;
+    display: block !important;
+  }
 `;
 
 export const PageTwo = ({ formData, handleSubjectChange, handleChange }) => {
@@ -57,7 +68,7 @@ export const PageTwo = ({ formData, handleSubjectChange, handleChange }) => {
         />
       </FlexContainer>
       <FlexContainer gap="5px" margin="0 0 20px 0">
-        <Text> Изостаноци: оправдани</Text>
+        <Text>Изостаноци: оправдани</Text>
         <Input
           type="text"
           name="justifiedAbsences"
@@ -66,7 +77,7 @@ export const PageTwo = ({ formData, handleSubjectChange, handleChange }) => {
           separatorWidth="100%"
           textAlign="center"
         />
-        <Text> неоправдани</Text>
+        <Text>неоправдани</Text>
         <Input
           type="text"
           name="unjustifiedAbsences"
@@ -88,10 +99,10 @@ export const PageTwo = ({ formData, handleSubjectChange, handleChange }) => {
             separatorWidth="100%"
             inputWidth="35%"
           />
-          <Text> одделение</Text>
+          <Text>одделение</Text>
         </FlexContainer>
         <FlexContainer gap="10px" margin="0 0 20px 0">
-          <Text> на основното училиште со</Text>
+          <Text>на основното училиште со</Text>
           <Input
             type="text"
             name="finalGrade"
@@ -100,6 +111,7 @@ export const PageTwo = ({ formData, handleSubjectChange, handleChange }) => {
             description="oпшт успех"
             separatorWidth="100%"
             inputWidth="70%"
+            textAlign="center"
           />
         </FlexContainer>
         <FlexContainer justify="space-between">
@@ -133,7 +145,8 @@ export const PageTwo = ({ formData, handleSubjectChange, handleChange }) => {
               value={formData.year}
               onChange={handleChange}
               separatorWidth="100%"
-              inputWidth="15%"
+              inputWidth="20%"
+              textAlign="center"
             />
             <Text>година.</Text>
           </FlexContainer>
@@ -146,6 +159,7 @@ export const PageTwo = ({ formData, handleSubjectChange, handleChange }) => {
               onChange={handleChange}
               inputWidth="40%"
               separatorWidth="100%"
+              textAlign="center"
             />
           </FlexContainer>
         </FlexContainer>
@@ -180,8 +194,8 @@ export const PageTwo = ({ formData, handleSubjectChange, handleChange }) => {
           <Text>oд</Text>
           <Input
             type="text"
-            name="year"
-            value={formData.value}
+            name="fullYear"
+            value={formData.fullYear}
             onChange={handleChange}
             textAlign="center"
             inputWidth="25%"

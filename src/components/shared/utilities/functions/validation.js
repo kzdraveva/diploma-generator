@@ -21,10 +21,12 @@ export const validateFormData = (data) => {
     "finalGrade",
     "delNum",
     "date",
+    "actNum",
+    "ministry",
+    "fullYear",
   ];
 
   for (const field of requiredFields) {
-    console.log("data[field]", field, "-----", data[field]);
     if (!data[field]) {
       return false;
     }
