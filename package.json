@@ -67,7 +67,8 @@
       "node_modules/**/*",
       "electron.js",
       "preload.js",
-      "package.json"
+      "package.json",
+      "ffmpeg/**/*" 
     ],
     "extraResources": [
       {
